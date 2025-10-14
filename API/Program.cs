@@ -1,3 +1,4 @@
+using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 });
 
 var app = builder.Build();
+
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
 
 // Configure the HTTP request pipeline.
 
