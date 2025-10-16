@@ -31,7 +31,7 @@ public class ProductsController(IProductRepository productRepository) : Controll
     public async Task<ActionResult<Product>> CreateProduct(Product product)
     {
         productRepository.AddProduct(product);
-        if (await productRepository.SavesChangesAsync()) return CreatedAtAction("GetProduct", new { id = product.Id });
+        if (await productRepository.SavesChangesAsync()) return CreatedAtAction("GetProduct", new { id = product.Id }, product);
 
         return BadRequest("Problem Creating a product");
     }
